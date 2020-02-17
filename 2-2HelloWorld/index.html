@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Hello World</title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id ="app">
+			{{content}}
+		</div>
+		
+		<div id="app2"> 
+			
+			
+		</div>
+		
+		
+		<script>
+			
+			/* var dom = document.getElementById('app');
+			dom.innerHTML = 'Hello World Vue.js'; */
+			
+			/* Vue写法 */
+			var app = new Vue({
+				el: '#app',
+				data: {
+					content: 'Hello World Vue写法'
+				}
+			})
+			
+			 setTimeout(function() {
+				 app.$data.content = 'HEY HEY HELLO WORLD';
+			 }, 2000);
+		</script>
+		
+		<script>
+			var dom = document.getElementById('app2');
+			dom.innerHTML = 'Hello World setTimeout';
+		
+			setTimeout(function() {
+				dom.innerHTML = 'Bye Bye setTimeout'
+			},2000)
+			
+		</script>
+	</body>
+</html>

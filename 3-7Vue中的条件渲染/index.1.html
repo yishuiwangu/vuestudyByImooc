@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>3-7Vue中的条件渲染</title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div v-if="show">
+				用户名：<input key="username"/>
+			</div>
+			<div v-else>
+				邮箱名：<input key="email"/>
+			</div>
+
+		</div>
+		
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					show: false
+				}
+			})
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../vue.js"></script>
+	</head>
+	<body>
+
+		<div id="app2">
+			<input type="text" v-model="inputValue" />
+			<button v-on:click="handleBtnClik">提交</button>
+			<ul>
+				<li v-for="item in list">
+					{{item}}
+				</li>
+			</ul>
+
+		</div>
+
+		<!-- MVVM设计模式 -->
+		<script>
+			var app = new Vue({
+				el: '#app2',
+				data: {
+					list: ['Vue第一课的内容', 'Vue第二课的内容'],
+					inputValue: ''
+				},
+				methods: {
+					handleBtnClik: function() {
+						//alert('click');
+						/* app.$data.list.push(app.$data.inputValue); */
+						this.list.push(this.inputValue);
+						this.inputValue = '';
+					}
+
+				}
+			})
+		</script>
+
+	</body>
+</html>

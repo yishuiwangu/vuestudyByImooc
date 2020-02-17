@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>组件参数校验与非props特征</title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<child content="123456"></child>
+			<child ></child>
+		</div>
+		
+		<script type="text/javascript">
+			
+			
+				
+			Vue.component('child',{
+				props:{
+					/* 自由可以约束父组件传递过来的content字段的值必须是String 或者String*/
+					/* content: [Number,String] */
+					content: {
+						type: String,
+						required: false,
+						default: 'default Value',
+						validator: function(value){
+							return (value.length>5)
+						}
+					}
+				},
+				template: '<div>{{content}}</div>'
+			})
+			
+			var vm = new Vue({
+				el: '#root',
+				data: {
+					co: '1234561'
+				},
+				methods:{
+				
+				}
+			})
+		</script>
+		
+	</body>
+</html>

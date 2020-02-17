@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>3-7Vue中的条件渲染</title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- true false会直接移除dom -->
+			<!-- v-if v-else 要连起来一起写 -->
+			<div v-if="show" >
+				{{message}}
+			</div>
+			<div v-else >
+				Bye Bye
+			</div>
+			
+			<div v-show="show">
+				{{message}}
+			</div>
+			
+			<div v-if="show2 === 'a' " > This is A </div>
+			<div v-else-if="show2 === 'b' " > This is B </div>
+			<div v-else>
+				This is others
+			</div>
+
+		</div>
+		
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					show: false,
+					message: 'Hello World 条件渲染',
+					show2: "a"
+				}
+			})
+		</script>
+		
+	</body>
+</html>

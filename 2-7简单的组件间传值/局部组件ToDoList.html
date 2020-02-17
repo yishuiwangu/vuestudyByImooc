@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+
+		<div id="root">
+			<input type="text" v-model="inputValue" />
+			<button v-on:click="handleBtnClik">提交</button>
+			<ul>
+				<!-- <li v-for="item in list">
+					{{item}}
+				</li> -->
+				<!-- 循环的时候 list每项赋值给item 然后item通告v-bind传给todo-item的content -->
+				<todo-item v-bind:content='item'
+							v-bind:index = "index"
+							v-for="(item,index) in list"
+							@delete="handleItemDelete"
+							>
+					
+				</todo-item>
+			</ul>
+
+		</div>
+
+		<!-- MVVM设计模式 -->
+		<script>
+			
+			/* 局部组件定义 */
+		var TodoItem = {
+			props: ['content','index'],
+			template: "<li @click='handleItemClick' >{{content}}</li>",
+			methods: {
+				handleItemClick: function() {
+					console.log('子组件');
+					/* 向外发送事件 */
+					this.$emit("delete",this.index);
+				}
+			}
+		}
+
+
+			var app = new Vue({
+				el: '#root',
+				/* 局部组件注册 */
+				components: {
+					TodoItem: TodoItem
+				},
+				data: {
+					list: [],
+					inputValue: ''
+				},
+				methods: {
+					handleBtnClik: function() {
+						//alert('click');
+						/* app.$data.list.push(app.$data.inputValue); */
+						this.list.push(this.inputValue);
+						this.inputValue = '';
+					},
+					handleItemDelete: function(index) {
+						console.log('删'+index);
+						this.list.pop(index);
+					}
+
+				}
+			})
+		</script>
+
+	</body>
+</html>

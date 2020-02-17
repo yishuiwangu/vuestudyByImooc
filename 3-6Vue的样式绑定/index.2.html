@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>3-6Vue的样式绑定-style的绑定</title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.activated {
+				color: deeppink;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!-- class的对象绑定写法 -->
+			<div :style="styleObj" @click="handleDivClick">
+				HELLO WORLD
+			</div>
+			
+			<div :style="[styleObj,{fontSize: '20px'}]"  @click="handleDivClick">
+				HEY KONG
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					styleObj: {
+						color: "black"
+					}
+				},
+				methods: {
+					handleDivClick: function() {
+						this.styleObj.color = this.styleObj.color === 'black'?'red':'black';
+					}
+				}
+			})
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>3-5计算数学的setter和getter</title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{fullName}}
+		</div>
+		
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					firstName: 'Dell',
+					lastName: 'Lee'
+				},
+				computed: {
+					/* 计算属性有缓存功能，fisetname和lastnam不改变只是走缓存取值fullname */
+					// fullName: function() {
+					// 	console.log('计算了一次');
+					// 	return this.firstName + " " + this.lastName;
+					// }
+					fullName: {
+						get: function(){
+							return this.firstName + " " + this.lastName;
+						},
+						set: function(value){
+							 var arr = value.split(" ");
+							 console.log(arr);
+							 this.firstName = arr[0];
+							 this.lastName=arr[1];
+							console.log(value);
+						}
+					}
+				}
+			})
+		</script>
+		
+	</body>
+</html>

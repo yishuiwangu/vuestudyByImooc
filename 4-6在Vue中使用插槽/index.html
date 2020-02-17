@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>在Vue中使用插槽</title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<child>
+			
+				
+			</child>
+		</div>
+		
+		<script type="text/javascript">
+			
+			Vue.component('child',{
+				template: '<div><p>hello</p><slot>默认内容</slot></div>'
+			})
+			
+			var vm = new Vue({
+				el: '#root',
+				data: {
+					
+				}
+			})
+		</script>
+		
+	</body>
+</html>

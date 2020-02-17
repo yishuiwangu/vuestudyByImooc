@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>在Vue中使用插槽</title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<body-content>
+				<div class="header" slot="header">header</div>
+				<div class="footer" slot="footer">footer</div>
+				
+			</body-content>
+		</div>
+		
+		<script type="text/javascript">
+			
+			Vue.component('body-content',{
+				template: `
+					<div>
+						<slot name='header'>DEFAULT HEADER</slot>
+						<div class='content' > content</div>
+						<slot name='footer'></slot>
+						
+					</div>
+				`
+			})
+			
+			var vm = new Vue({
+				el: '#root',
+				data: {
+					
+				}
+			})
+		</script>
+		
+	</body>
+</html>

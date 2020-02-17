@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue中多个元素或组件的过渡</title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+		<!-- 引入animate.css -->
+		<link rel="stylesheet" type="text/css" href="../animate.css" />
+		<script src="../velocity.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.fade-enter,
+			.fade-leave-to {
+				opacity: 0;
+			}
+
+			.fade-enter-active {
+				transition: opacity 4s;
+			}
+
+			.fade-leave-active {
+				transition: opacity 4s;
+			}
+		</style>
+	</head>
+	<body>
+	
+		<div id="root">
+
+			<transition name="fade" mode="out-in">
+				<component :is="type"></component>
+
+			</transition>
+
+			<button @click="handleClick">切换</button>
+		</div>
+
+		
+		<script type="text/javascript">
+			Vue.component('child', {
+				template: '<div>child</div>'
+			})
+			Vue.component('child-one', {
+				template: '<div>child-one</div>'
+			})
+			var vm = new Vue({
+				el: '#root',
+				data: {
+					type: 'child'
+				},
+				methods: {
+					handleClick: function() {
+						this.type = this.type === 'child'?'child-one':'child';
+					}
+				}
+			})
+		</script>
+
+	</body>
+</html>

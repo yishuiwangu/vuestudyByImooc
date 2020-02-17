@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ref引用2</title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<counter ref="one" @change='handleChange'></counter>
+			<counter ref="two"  @change='handleChange'></counter>
+			<div>
+				{{total}}
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			Vue.component('counter', {
+				template: '<div @click="handleClick">{{number}} </div>',
+				data: function() {
+					return {
+						number: 0
+					}
+				},
+				methods: {
+					handleClick: function() {
+						this.number++;
+						this.$emit('change');
+					}
+				}
+
+			})
+
+			var vm = new Vue({
+				el: '#root',
+				data: {
+					total: 0
+				},
+				methods: {
+					handleChange: function(){
+						console.log(this.$refs.one.number )
+						console.log(this.$refs.two.number)
+						this.total = this.$refs.one.number + this.$refs.two.number;
+					}
+				}
+			})
+		</script>
+
+	</body>
+</html>

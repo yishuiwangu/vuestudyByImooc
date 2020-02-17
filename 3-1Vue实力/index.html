@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../vue.js"></script>
+	</head>
+	<body>
+		<div id="root">
+			
+			<div @click="handleCilck">
+				{{message}}
+				
+			</div>
+			
+			<todo-item></todo-item>
+			
+		</div>
+	
+		
+		
+		
+		
+		<script>
+			
+			Vue.component('TodoItem',{
+				template: '<div> hello div </div>'
+			})
+			
+			var vm = new Vue({
+				el: '#root',
+				data: {
+					message: 'hello world'
+				},
+				methods: {
+					handleCilck: function(){
+						console.log('hei hei hei')
+					}
+				}
+			})
+		</script>
+		
+	</body>
+</html>

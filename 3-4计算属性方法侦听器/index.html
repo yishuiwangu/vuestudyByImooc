@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>3-4计算属性，方法与侦听器</title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{firstName+" " + lastName}}
+			<p></p>
+			{{fullName}}
+			<p></p>
+			{{fullName2()}} <p></p>
+			{{fullName3}}
+		</div>
+
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					firstName: 'Dell',
+					lastName: 'Lee',
+					fullName3: '一睡万古',
+					age: 18
+				},
+				watch: {
+					firstName: function() {
+						this.fullName3 = this.firstName + " " + this.lastName;
+					},
+					lastName: function() {
+						this.fullName3 = this.firstName + " " + this.lastName;
+					}
+				},
+				methods: {
+					/* 没有缓存功能 只要页面渲染就会调用一次 */
+					fullName2: function() {
+						console.log('方法一次')
+						return this.firstName + " " + this.lastName;
+					}
+				},
+				computed: {
+					/* 计算属性有缓存功能，fisetname和lastnam不改变只是走缓存取值fullname */
+					fullName: function() {
+						console.log('计算了一次');
+						return this.firstName + " " + this.lastName;
+					}
+				}
+			})
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../vue.js"></script>
+	</head>
+	<body>
+		
+		<!-- MVVM模式的V层 -->
+		<div id="app">
+			<input type="text" />
+			<button>提交</button>
+			
+			<ul>
+				<li>第一课的内容</li>
+				<li>第二课的内容</li>
+			</ul>
+		</div>
+		
+		<div id="app2">
+			<input type="text" />
+			<button>提交</button>
+			<ul>
+				<li v-for="item in list">
+					{{item}}
+				</li>
+			</ul>
+			
+		</div>
+		
+		<script>
+			
+			/* MVVM模式的M层 */
+			/* Vue是VM层 */
+			var app = new Vue({
+				el: '#app2',
+				data: {
+					list: ['Vue第一课的内容','Vue第二课的内容']
+				}
+			})
+			
+		</script>
+	</body>
+</html>
